@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import navs from '../nav'
 export default {
  name : "", 
  data(){
@@ -12,6 +13,7 @@ export default {
   }
  },
  components : {
+     navs
  },
 }
 </script>

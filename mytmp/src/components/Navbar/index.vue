@@ -16,19 +16,19 @@
       <el-submenu index="1">
         <template slot="title">
           <i class="el-icon-location"></i>
-          <span>导航一</span>
+          <span>博客管理</span>
         </template>
         <el-menu-item index="/blog/article">
           <i class="el-icon-user-solid"></i>
-          <span slot="title">会员管理</span>
+          <span slot="title">文章管理</span>
         </el-menu-item>
         <el-menu-item index="/blog/category">
           <i class="el-icon-s-cooperation"></i>
-          <span slot="title">供应商管理</span>
+          <span slot="title">分类管理</span>
         </el-menu-item>
         <el-menu-item index="/blog/label">
           <i class="el-icon-s-goods"></i>
-          <span slot="title">商品管理</span>
+          <span slot="title">标签管理</span>
         </el-menu-item>
       </el-submenu>
     </el-menu>

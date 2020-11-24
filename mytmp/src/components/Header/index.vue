@@ -8,7 +8,7 @@
       />
       <h3 class="title">积云会员管理系统</h3>
     </router-link>
-    <el-dropdown @command="handleCommand">
+    <el-dropdown>
       <span class="el-dropdown-link">
        <img
          style="width:40px;height:40px; vertical-align: middle;"
@@ -45,15 +45,8 @@ export default {
   },
   methods: {
     //退出登录的方法
-    async logout() {
-        this.$router.push("/login");
-    //   const res = await this.$store.dispatch("UserLogout");
-    //   if (res) {
-    //     //回到登录页面
-    //     this.$router.push("/login");
-    //   } else {
-    //         this.$message.error("修改密码失败")
-    //   }
+     logout() {
+     
     }
   },
   components: {}
