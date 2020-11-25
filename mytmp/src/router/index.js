@@ -42,7 +42,7 @@ const routes = [
       {
         path: 'category',
         name: 'Category',
-        component: () => import('@/views/category/index'),
+        component: () => import('@/views/category/index.vue'),
         meta: {
           title: '分类管理',
           icon: 'el-icon-s-order'

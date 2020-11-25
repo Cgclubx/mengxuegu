@@ -1,11 +1,12 @@
 <template>
   <div>
-    <el-form :inline="true" size="mini">
+    <el-form :inline="true" ref="query" :model="query" size="mini">
       <el-form-item label="文章标题:">
-        <el-input v-model.trim="query.title"></el-input>
+        <el-input v-model.trim="query.title" prop="title"></el-input>
       </el-form-item>
       <el-form-item label="状态:">
         <el-select
+          prop="status"
           v-model="query.status"
           clearable
           filterable
@@ -18,8 +19,18 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button icon="el-icon-search" type="primary">查询</el-button>
-        <el-button icon="el-icon-refresh" class="filter-item">重置</el-button>
+        <el-button
+          icon="el-icon-search"
+          type="primary"
+          @click="getArticleById()"
+          >查询</el-button
+        >
+        <el-button
+          icon="el-icon-refresh"
+          class="filter-item"
+          @click="reload('query')"
+          >重置</el-button
+        >
       </el-form-item>
     </el-form>
 
@@ -72,17 +83,31 @@
           prop="updateDate"
           align="center"
           label="最后更新时间"
-          width="120"
+          width="130"
         >
         </el-table-column>
       </el-table-column>
-      <el-table-column align="center" prop="date" label="操作" width="160">
+      <el-table-column align="center" prop="date" label="操作" width="300">
         <template slot-scope="scope">
-          <el-button type="primary" size="small">查看</el-button>
-          <el-button type="success" size="small">审核</el-button>
+          <el-button type="primary" size="small" @click="openView(scope.row.id)">查看</el-button>
+          <el-button
+            type="success"
+            size="small"
+            @click="openAudit(scope.row.id)"
+            >审核</el-button
+          >
           <el-button type="danger" size="small" @click="dele(scope.row.id)"
             >删除</el-button
           >
+          <!-- 查看 -->
+          <audit
+            :id="audit.id"
+            :isAudit="audit.isAudit"
+            :title="audit.title"
+            :visible="audit.visible"
+            :formData="formData"
+            :remoteClose="remoteClose"
+          ></audit>
         </template>
       </el-table-column>
     </el-table>
@@ -102,11 +127,19 @@
 </template>
 
 <script>
+import audit from "./audit";
 import article from "../../api/article";
 export default {
   name: "",
   data() {
     return {
+      audit: {
+        id: null,
+        isAudit: true,
+        visible: false,
+        title: "",
+      },
+      formData: {},
       pagesize: 10,
       pagenum: 1,
       tableData: [],
@@ -118,7 +151,44 @@ export default {
     };
   },
   computed: {},
+  components: { audit },
   methods: {
+    openView(id) {
+      this.getArticleById(id);
+      this.audit.id = id;
+      this.audit.isAudit = false;
+      this.audit.title = "文章详情";
+      this.audit.visible = true;
+    },
+    // 查询文章详情
+    getArticleById(id) {
+      article.getById(id).then((response) => {
+        this.formData = response.data;
+      });
+    },
+    // 打开审核窗口
+    openAudit(id) {
+      this.getArticleById(id);
+      this.audit.id = id; // 文章id
+      this.audit.isAudit = true; // 审核页面
+      this.audit.title = "审核文章";
+      this.audit.visible = true;
+    },
+    // 关闭子组件弹出窗口
+    remoteClose() {
+      this.audit.visible = false;
+      this.getList();
+    },
+    // 查询
+    queryData() {
+      this.pagenum = 1;
+      this.getList();
+    },
+    // 重置
+    reload(formName) {
+      this[formName] = {};
+      this.getList();
+    },
     // 删除
     dele(id) {
       this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
