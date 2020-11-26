@@ -8,7 +8,7 @@
       <el-main style="width:100%">
         <Header @show="show" style="width:100%;"></Header>
         <!-- 右侧主体内容 -->
-        <Main style="width:100%;padding-top:70px;"></Main>
+        <Main style="width:100%;padding:70px 20px 0px 20px;box-sizing:border-box;"></Main>
       </el-main>
     </el-container>
   </div>

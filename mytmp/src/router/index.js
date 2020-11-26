@@ -3,27 +3,83 @@ import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 
-const routes = [
-  {
+const routes = [{
     path: '/',
-    component: ()=> {return import('@/components/Layout.vue')},
+    component: () => {
+      return import('@/components/Layout.vue')
+    },
     redirect: '/dashboard',
-    children: [
-      {
+    children: [{
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
       meta: {
         title: '首页',
-        icon: 'el-icon-s-home',
-        affix:true,
       }
-    },
-  ]
+    }, ]
   },
+  // 系统管理
+  {
+    path: '/system',
+    component: () => {
+      return import('@/components/Layout.vue')
+    },
+    redirect: '/system/user',
+    children: [{
+        path: 'user',
+        name: 'User',
+        component: () => import('@/views/user'),
+        meta: {
+          names: "系统管理",
+          title: "用户管理",
+        }
+      },
+      {
+        path: 'role',
+        name: 'Role',
+        component: () => import('@/views/role'),
+        meta: {
+          names: "系统管理",
+          title: "角色管理",
+        }
+      },
+      {
+        path: 'menu',
+        name: 'Menu',
+        component: () => import('@/views/menu'),
+        meta: {
+          names: "系统管理",
+          title: "菜单管理",
+        }
+      }
+    ],
+
+
+  },
+  // // 广告管理
+  {
+    path: '/advert',
+    component: () => {
+      return import('@/components/Layout.vue')
+    },
+    redirect: '/advert/index',
+    children: [{
+      path: 'index',
+      name: 'Advert',
+      component: () => import('@/views/advert/index'),
+      meta: {
+        names: "广告管理",
+        icon: 'el-icon-notebook-1'
+      }
+    }]
+
+  },
+  // 博客管理
   {
     path: '/blog',
-    component: ()=> {return import('@/components/Layout.vue')},
+    component: () => {
+      return import('@/components/Layout.vue')
+    },
     redirect: '/blog/article',
     name: 'Blog',
     meta: {
@@ -35,7 +91,7 @@ const routes = [
         name: 'Article',
         component: () => import('@/views/article/index'),
         meta: {
-          names:"博客管理",
+          names: "博客管理",
           title: '文章管理',
           icon: 'el-icon-notebook-1'
         }
@@ -45,7 +101,7 @@ const routes = [
         name: 'Category',
         component: () => import('@/views/category/index.vue'),
         meta: {
-          names:"博客管理",
+          names: "博客管理",
           title: '分类管理',
           icon: 'el-icon-s-order'
         }
@@ -55,14 +111,14 @@ const routes = [
         name: 'Label',
         component: () => import('@/views/label/index'),
         meta: {
-          names:"博客管理",
+          names: "博客管理",
           title: '标签管理',
           icon: 'el-icon-collection-tag'
         }
       }
     ]
   },
- 
+
 ];
 
 const router = new VueRouter({

@@ -24,22 +24,49 @@
       </el-menu-item>
       <el-submenu index="1">
         <template slot="title">
-          <i class="el-icon-location"></i>
+          <i class="el-icon-notebook-2"></i>
           <span>博客管理</span>
         </template>
         <el-menu-item index="/blog/article">
-          <i class="el-icon-user-solid"></i>
+          <i class="el-icon-notebook-1"></i>
           <span slot="title">文章管理</span>
         </el-menu-item>
         <el-menu-item index="/blog/category">
-          <i class="el-icon-s-cooperation"></i>
+          <i class="el-icon-s-order"></i>
           <span slot="title">分类管理</span>
         </el-menu-item>
         <el-menu-item index="/blog/label">
-          <i class="el-icon-s-goods"></i>
+          <i class="el-icon-collection-tag"></i>
           <span slot="title">标签管理</span>
         </el-menu-item>
       </el-submenu>
+          <el-menu-item index="/advert/index">
+        <i class="el-icon-picture-outline-round"></i>
+        <span slot="title">广告管理</span>
+      </el-menu-item>
+      <el-submenu index="2">
+        <template slot="title">
+          <i class="el-icon-notebook-2"></i>
+          <span>系统管理</span>
+        </template>
+        <el-menu-item index="/system/user">
+          <i class="el-icon-user-solid sub-el-icon"></i>
+          <span slot="title">用户管理</span>
+        </el-menu-item>
+        <el-menu-item index="/system/role">
+          <i class="el-icon-coin sub-el-icon"></i>
+          <span slot="title">角色管理</span>
+        </el-menu-item>
+        <el-menu-item index="/system/menu">
+          <i class="el-icon-menu sub-el-icon"></i>
+          <span slot="title">菜单管理</span>
+        </el-menu-item>
+      </el-submenu>
+         <el-menu-item>
+         <router-link to="www.usian.cn/index"></router-link>
+        <i class="el-icon-link sub-el-icon"></i>
+        <span slot="title">积云教育官网</span>
+      </el-menu-item>
     </el-menu>
   </div>
 </template>

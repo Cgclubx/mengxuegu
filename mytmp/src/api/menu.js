@@ -1,20 +1,16 @@
-import request from '@/utils/request'
+import request from "@/utils/request"
 export default {
   // 列表分页接口
-  getList(query, current = 1, size = 20) {
+  getList(query) {
     return request({
-      url: `/article/label/search`,
+      url: `/system/menu/search`,
       method: 'post',
-      data: {
-        ...query,
-        current,
-        size
-      } 
+      data: query
     })
   },
   add(data) {
     return request({
-      url: `/article/label`,
+      url: `/system/menu`,
       method: 'post',
       data
     })
@@ -22,23 +18,23 @@ export default {
   // 查询
   getById(id) {
     return request({
-      url: `/article/label/${id}`, 
+      url: `/system/menu/${id}`, // 反单引号 ``
       method: 'get'
     })
   },
   // 更新
   update(data) {
     return request({
-      url: `/article/label`,
-      method: 'put', 
+      url: `/system/menu`,
+      method: 'put', // put 方式提交
       data,
     })
   },
-  // 删除
   deleteById(id) {
     return request({
-      url: `/article/label/${id}`, 
-      method: 'delete', 
+      url: `/system/menu/${id}`, // 反单引号 ``
+      method: 'delete', // delete 方式提交
     })
   }
+
 }

@@ -27,5 +27,8 @@ html,body,#app{
   font-size: 18px;
   // font-weight: 700;
 }
+label{
+  font-weight: bold !important;
+}
 
 </style>

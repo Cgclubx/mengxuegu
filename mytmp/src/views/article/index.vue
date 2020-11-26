@@ -80,14 +80,16 @@
 
       <el-table-column align="center" label="最后更新时间">
         <el-table-column
-          prop="updateDate"
           align="center"
           label="最后更新时间"
           width="130"
         >
+       <template slot-scope="scope">
+         {{getFormat(scope.row.updateDate)}}
+       </template>
         </el-table-column>
       </el-table-column>
-      <el-table-column align="center" prop="date" label="操作" width="320">
+      <el-table-column align="center" prop="date" label="操作">
         <template slot-scope="scope">
           <el-button type="primary" size="small" @click="openView(scope.row.id)">查看</el-button>
           <el-button
@@ -127,6 +129,7 @@
 </template>
 
 <script>
+import {format} from '../../utils/date'
 import audit from "./audit";
 import article from "../../api/article";
 export default {
@@ -153,6 +156,10 @@ export default {
   computed: {},
   components: { audit },
   methods: {
+    // 调用时间过滤模块的方法
+      getFormat(date) {
+      return format(date);
+    },
     openView(id) {
       this.getArticleById(id);
       this.audit.id = id;
