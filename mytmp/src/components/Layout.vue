@@ -1,57 +1,81 @@
 <template>
- <div>
-     <!-- 头部 -->
-    <Header></Header>
-     <!-- 侧边栏 -->
-    <Navbar></Navbar>
-     <!-- 右侧主体内容 -->
-     <Main></Main>
- </div>
+  <div style="height:100%">
+    <el-container >
+      <el-aside  width="null">
+        <!-- 侧边栏 -->
+        <Navbar style="height:100%;" :isCollapse="isCollapse"></Navbar>
+      </el-aside>
+      <el-main style="width:100%">
+        <Header @show="show" style="width:100%;"></Header>
+        <!-- 右侧主体内容 -->
+        <Main style="width:100%;padding-top:70px;"></Main>
+      </el-main>
+    </el-container>
+  </div>
 </template>
 
 <script>
-import Header from "./Header"
-import Navbar from "./Navbar"
-import Main from "./Main"
+import Header from "./Header";
+import Navbar from "./Navbar";
+import Main from "./Main";
 export default {
- name : "", 
- data(){
-  return {
-  }
- },
- components : {
-   Header,
-Navbar,
-Main
- },
-}
+  name: "",
+  data() {
+    return {
+      isCollapse: false,
+    };
+  },
+  methods: {
+    show(val) {
+      this.isCollapse = val;
+    },
+  },
+  components: {
+    Header,
+    Navbar,
+    Main,
+  },
+};
 </script>
-
-
 <style scoped>
-    .header{
-        height: 50px;
-        line-height: 50px;
-        background-color: #2d3a4b;
-        position : absolute;
-        left: 0;
-        right: 0;
-    }
-    .navBar{
-        width : 230px;
-        background-color: #545c64;
-        position : absolute;
-        top : 50px;
-        bottom : 0;
-        left: 0;
-    }
-    .main{
-        position : absolute;
-        left: 230px;
-        top : 50px;
-        bottom : 0;
-        right : 0;
-        background-color: #fff;
-        overflow-y: auto;
-    }
+.el-header {
+  background-color: #b3c0d1;
+  color: #333;
+}
+
+.el-aside {
+  background-color: #d3dce6;
+  color: #333;
+}
+.navBar {
+  background-color: #304155;
+}
+.header {
+  float: left;
+  height: 60px;
+  line-height: 60px;
+  background-color: #fff;
+  z-index: 9999;
+}
+.el-main{
+  width: 80%;
+  height: 100%;
+  padding: 0;
+}
+.el-container{
+  height: 100%;
+}
+/* .main {
+  float: left;
+  background-color: #fff;
+  overflow: auto;
+} */
+/* .router-link-active {
+  text-decoration: none;
+  color: #ffd04b;
+}
+a {
+  text-decoration: none;
+  color: black;
+} */
 </style>

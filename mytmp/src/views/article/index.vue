@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="width:100%;">
     <el-form :inline="true" ref="query" :model="query" size="mini">
       <el-form-item label="文章标题:">
         <el-input v-model.trim="query.title" prop="title"></el-input>
@@ -34,7 +34,7 @@
       </el-form-item>
     </el-form>
 
-    <el-table :data="tableData" style="width: 100%">
+    <el-table :data="tableData" style="width: 100%" >
       <el-table-column
         prop="date"
         align="center"
@@ -87,7 +87,7 @@
         >
         </el-table-column>
       </el-table-column>
-      <el-table-column align="center" prop="date" label="操作" width="300">
+      <el-table-column align="center" prop="date" label="操作" width="320">
         <template slot-scope="scope">
           <el-button type="primary" size="small" @click="openView(scope.row.id)">查看</el-button>
           <el-button

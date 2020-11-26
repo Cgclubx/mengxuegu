@@ -39,7 +39,7 @@
         </el-form-item>
       </el-form>
       <!-- 数据列表 :data 绑定渲染的数据, border 纵向边框 -->
-      <el-table :data="list" border highlight-current-row style="width: 100%">
+      <el-table :data="list" border highlight-current-row style="width: 100%" :fit='true'>
         <!-- type="index"获取索引值，从1开始 ，label显示标题，prop 数据字段名，width列宽 -->
         <el-table-column align="center" type="index" label="序号" width="60">
         </el-table-column>

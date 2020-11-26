@@ -1,14 +1,23 @@
 <template>
-  <div class="navBar">
+  <div class="navBar" style="height: 100%">
     <el-menu
-      theme="dark"
       :default-active="$route.path"
       class="el-menu-vertical-demo"
-      background-color="#545c64"
+      background-color="#304155"
       text-color="#fff"
+      style="height: 100%"
       :router="true"
-      active-text-color="#ffd04b"
+      active-text-color="#3C99FF"
+      :collapse="isCollapse"
     >
+      <router-link class="head-log" to="/" tag="p">
+      <img
+        class="logo"
+        src="http://mengxuegu.com:9999/img/logo.7156be27.png"
+        alt="logo"
+      />
+      <h4 class="title" v-if="!isCollapse">积云会员管理系统</h4>
+    </router-link>
       <el-menu-item index="/dashboard">
         <i class="el-icon-s-home"></i>
         <span slot="title">首页</span>
@@ -38,16 +47,51 @@
 <script>
 export default {
   name: "",
+  props:["isCollapse"],
   data() {
-    return {};
+    return {
+    };
   },
+  mounted() {
+},
   components: {},
 };
 </script>
 
 
 <style scoped>
+/* .el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  min-height: 400px;
+} */
 .el-menu {
   border-right: none;
+}
+.el-submenu .el-menu-item {
+  background-color: #1f2d3d !important;
+}
+.el-submenu .el-menu-item:hover {
+  background-color: #263444 !important;
+}
+.logo {
+  vertical-align: middle;
+  width: 25px;
+  height: 25px;
+}
+.title {
+  display: inline;
+  text-decoration: none;
+  color: #fff;
+  margin-left: 5px;
+}
+.head-log {
+  width: 100%;
+  height: 60px;
+  background-color: #2b2f3a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px;
+  box-sizing: border-box;
 }
 </style>

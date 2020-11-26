@@ -35,6 +35,7 @@ const routes = [
         name: 'Article',
         component: () => import('@/views/article/index'),
         meta: {
+          names:"博客管理",
           title: '文章管理',
           icon: 'el-icon-notebook-1'
         }
@@ -44,6 +45,7 @@ const routes = [
         name: 'Category',
         component: () => import('@/views/category/index.vue'),
         meta: {
+          names:"博客管理",
           title: '分类管理',
           icon: 'el-icon-s-order'
         }
@@ -53,6 +55,7 @@ const routes = [
         name: 'Label',
         component: () => import('@/views/label/index'),
         meta: {
+          names:"博客管理",
           title: '标签管理',
           icon: 'el-icon-collection-tag'
         }

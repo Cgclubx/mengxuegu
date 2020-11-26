@@ -36,7 +36,12 @@
             readonly
           />
         </el-form-item>
-        <el-form-item label="内容:"> </el-form-item>
+              <el-form>
+      <el-form-item label="内容:">
+        <!-- 3. 主体内容 :editable="false" 禁止编辑-->
+        <mavon-editor ref="md" :editable="true"  />
+      </el-form-item>
+    </el-form>
         <el-form-item align="center" v-if="isAudit">
           <el-button @click="auditSuccess()" type="primary">审核通过</el-button>
           <el-button @click="auditFail()" type="danger">审核不通过</el-button>
@@ -47,6 +52,8 @@
 </template>
 
 <script>
+import { mavonEditor } from "mavon-editor";
+import "mavon-editor/dist/css/index.css";
 import api from "@/api/article"
 import categoryApi from "@/api/category";
 export default {
@@ -77,6 +84,7 @@ export default {
     };
   },
   computed: {},
+  components:{ mavonEditor},
   methods: {
     // 获取所有分类与标签
     getLabelOptions() {
